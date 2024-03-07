@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct ManagementView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+  @State private var isSecondViewActive = false
+
+  var body: some View {
+    NavigationView {
+      VStack {
+
+        NavigationLink(destination: ContentView()) {
+          Text("Go PomoFit")
+        }
+        
+      }.navigationTitle("Set Up Your PomoFit")
+
     }
+
+
+  }
 }
 
 #Preview {
-    ManagementView()
+  ManagementView()
 }

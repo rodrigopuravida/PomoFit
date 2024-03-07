@@ -24,6 +24,7 @@ struct ContentView: View {
             Text("Time in Minutes")
               .font(.title)
           Slider(value: $timeRemaining, in: 0...60)
+            .padding(.horizontal)
             Text("\(abs(timeRemaining), specifier: "%.0f")")
               .font(.title)
 
