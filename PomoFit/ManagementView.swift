@@ -13,8 +13,6 @@ class TimeSettings: ObservableObject {
 
 struct ManagementView: View {
 
-  @EnvironmentObject var settings: TimeSettings
-
   @State private var isSecondViewActive = false
 
   @State private var sliderValue: Double = 60.0
@@ -38,8 +36,6 @@ struct ManagementView: View {
         Text("Time  : \(sliderValue, specifier: "%.0f")")
           .font(.title2)
 
-        // Pass the slider value to the SecondView
-        //ContentView(sliderValue: $sliderValue)
 
       }.navigationTitle("Set Up Your PomoFit")
 

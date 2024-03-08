@@ -31,23 +31,6 @@ struct ContentView: View {
               .resizable()
               .frame(width:200, height: 200)
 
-          /*
-            Button {
-              print("Clicked the Start")
-            }
-              label: {
-                Label("Start", systemImage: "pencil")
-                  .padding()
-                  .foregroundStyle(.white)
-                  .background(.red)
-
-                }
-              .padding()
-
-
-            Text("Time left : \(focusTime, specifier: "%.0f")")
-              .font(.largeTitle)
- */
 
           Text("Time: \(abs(sliderValue), specifier: "%.0f")")
               .font(.largeTitle)
