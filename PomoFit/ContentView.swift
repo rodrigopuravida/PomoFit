@@ -10,12 +10,14 @@ import AVFoundation
 
 struct ContentView: View {
 
-  //@State private var focusTime: Double = .zero
-  @State private var timeRemaining : Double = 10
-  let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+
 
   @Environment(\.scenePhase) var scenePhase
   @State private var isActive = true
+
+  @Binding var sliderValue: Double
+
+  let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
 
     var body: some View {
@@ -23,10 +25,7 @@ struct ContentView: View {
         VStack {
             Text("Time in Minutes")
               .font(.title)
-          Slider(value: $timeRemaining, in: 0...60)
-            .padding(.horizontal)
-            Text("\(abs(timeRemaining), specifier: "%.0f")")
-              .font(.title)
+          
 
               Image("Pomo")
               .resizable()
@@ -50,7 +49,7 @@ struct ContentView: View {
               .font(.largeTitle)
  */
 
-          Text("Time: \(abs(timeRemaining), specifier: "%.0f")")
+          Text("Time: \(abs(sliderValue), specifier: "%.0f")")
               .font(.largeTitle)
               .foregroundStyle(.white)
               .padding(.horizontal, 20)
@@ -62,10 +61,10 @@ struct ContentView: View {
         .onReceive(timer) { time in
             guard isActive else { return }
 
-            if timeRemaining > 0 {
-                timeRemaining -= 1
+            if sliderValue > 0 {
+              sliderValue -= 1
             }
-          if timeRemaining == 0 {
+          if sliderValue == 0 {
             //AudioServicesPlaySystemSound(1026)
           }
         }
@@ -88,5 +87,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+  ContentView(sliderValue: .constant(0.5))
 }
