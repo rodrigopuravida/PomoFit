@@ -41,7 +41,22 @@ struct ContentView: View {
               .background(.black.opacity(0.75))
               .clipShape(.capsule)
 
+          Text("Selected Break in Minutes")
+            .font(.title)
+
+          Text("Time: \(abs(selectedBreak))")
+              .font(.largeTitle)
+              .foregroundStyle(.white)
+              .padding(.horizontal, 20)
+              .padding(.vertical, 5)
+              .background(.black.opacity(0.75))
+              .clipShape(.capsule)
+
         }
+        VStack {
+
+        }
+
         .onReceive(timer) { time in
             guard isActive else { return }
 
