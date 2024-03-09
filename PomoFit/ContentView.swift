@@ -16,6 +16,7 @@ struct ContentView: View {
   @State private var isActive = true
 
   @Binding var sliderValue: Double
+  @Binding var selectedBreak: Int
 
   let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
@@ -70,5 +71,5 @@ struct ContentView: View {
 
 
 #Preview {
-  ContentView(sliderValue: .constant(0.5))
+  ContentView(sliderValue: .constant(0.5), selectedBreak: .constant(5))
 }
