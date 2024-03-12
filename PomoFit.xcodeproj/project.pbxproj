@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		484E925C2B9FE3FC008192DC /* BreakTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484E925B2B9FE3FC008192DC /* BreakTime.swift */; };
+		484E925E2B9FE556008192DC /* PomoTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484E925D2B9FE556008192DC /* PomoTimer.swift */; };
 		48DE73EA2B9766DB00029481 /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE73E92B9766DB00029481 /* ManagementView.swift */; };
 		48EE377B2B91A4300012586E /* PomoFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE377A2B91A4300012586E /* PomoFitApp.swift */; };
 		48EE377D2B91A4300012586E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE377C2B91A4300012586E /* ContentView.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		484E925B2B9FE3FC008192DC /* BreakTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakTime.swift; sourceTree = "<group>"; };
+		484E925D2B9FE556008192DC /* PomoTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoTimer.swift; sourceTree = "<group>"; };
 		48DE73E92B9766DB00029481 /* ManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
 		48EE37772B91A4300012586E /* PomoFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomoFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48EE377A2B91A4300012586E /* PomoFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoFitApp.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 				48EE377E2B91A4320012586E /* Assets.xcassets */,
 				48EE37802B91A4320012586E /* Preview Content */,
 				48DE73E92B9766DB00029481 /* ManagementView.swift */,
+				484E925B2B9FE3FC008192DC /* BreakTime.swift */,
+				484E925D2B9FE556008192DC /* PomoTimer.swift */,
 			);
 			path = PomoFit;
 			sourceTree = "<group>";
@@ -142,6 +148,8 @@
 			files = (
 				48EE377D2B91A4300012586E /* ContentView.swift in Sources */,
 				48EE377B2B91A4300012586E /* PomoFitApp.swift in Sources */,
+				484E925C2B9FE3FC008192DC /* BreakTime.swift in Sources */,
+				484E925E2B9FE556008192DC /* PomoTimer.swift in Sources */,
 				48DE73EA2B9766DB00029481 /* ManagementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

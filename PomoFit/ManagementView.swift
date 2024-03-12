@@ -36,7 +36,7 @@ struct ManagementView: View {
           .padding(.horizontal)
 
         Divider()
-        Text("Time  : \(sliderValue, specifier: "%.0f")")
+        Text("Time  : \(abs(sliderValue), specifier: "%.0f")")
           .font(.title2)
         Divider()
 
