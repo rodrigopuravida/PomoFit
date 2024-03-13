@@ -17,6 +17,8 @@ struct ManagementView: View {
 
   @State private var sliderValue: Double = 60.0
 
+  @State private var counter = 0
+
   var breakTimes = [3, 5, 10, 15]
   @State private var selectedBreak = 5
 
@@ -25,7 +27,7 @@ struct ManagementView: View {
     NavigationView {
       VStack {
 
-        NavigationLink(destination: ContentView(sliderValue: $sliderValue, selectedBreak: $selectedBreak)) {
+        NavigationLink(destination: ContentView(sliderValue: $sliderValue, selectedBreak: $selectedBreak,counter: $counter)) {
           Text("Go PomoFit")
             .font(.title)
         }

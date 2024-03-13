@@ -9,35 +9,40 @@ import SwiftUI
 import AVFoundation
 
 struct ContentView: View {
-  
+
   @Environment(\.scenePhase) var scenePhase
   @State private var isActive = true
-  
+
   @Binding var sliderValue: Double
   @Binding var selectedBreak: Int
-  
+  @Binding var counter: Int
+
+
   let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
-  
-  
+
+
   var body: some View {
     ZStack {
       VStack {
         Text("Time in Minutes")
           .font(.title)
-        
-        
+
+
         Image("Pomo")
           .resizable()
           .frame(width:200, height: 200)
-        
-        
+
+
         PomoTimer(sliderValue: $sliderValue)
-        
+
+
         BreakTime(selectedBreak: $selectedBreak)
-        
+
+
+
       }
-      
-      
+
+
     }
   }
 }
@@ -45,5 +50,5 @@ struct ContentView: View {
 
 
 #Preview {
-  ContentView(sliderValue: .constant(0.5), selectedBreak: .constant(5))
+  ContentView(sliderValue: .constant(0.5), selectedBreak: .constant(5),counter: .constant(3))
 }

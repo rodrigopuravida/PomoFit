@@ -11,6 +11,9 @@ import AVFoundation
 struct PomoTimer: View {
     @Environment(\.scenePhase) var scenePhase
     @State private var isActive = true
+    @State private var counter = 0
+
+
 
   let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
@@ -29,12 +32,27 @@ struct PomoTimer: View {
       .onReceive(timer) { time in
           guard isActive else { return }
 
-          if sliderValue > 0 {
-            sliderValue -= 1
+        print("Slider value is \(Int(sliderValue))")
+
+
+
+
+
+          //if sliderValue > 0 {
+          //  sliderValue -= 1
+          //  print("Value of SliderValue \(sliderValue)")
+          //}
+
+        if counter == (Int(sliderValue) - 1) {
+          timer.upstream.connect().cancel()
+          print("I stopped")
+          } else {
+          print("The time is now \(time)")
           }
-        if sliderValue == 0 {
-          //AudioServicesPlaySystemSound(1026)
-        }
+
+          counter += 1
+          print("counter is \(counter)")
+
       }
       .onChange(of: scenePhase) {
           if scenePhase == .active {

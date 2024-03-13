@@ -13,7 +13,7 @@ struct BreakTime: View {
 
     var body: some View {
 
-      Text("Selected Break in Minutes")
+      Text("Break Time")
         .font(.title)
       
         Text("Time: \(abs(selectedBreak))")
