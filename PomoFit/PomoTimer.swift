@@ -11,15 +11,16 @@ import AVFoundation
 struct PomoTimer: View {
     @Environment(\.scenePhase) var scenePhase
     @State private var isActive = true
-    @State private var counter = 0
-
-
 
   let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
   @Binding var sliderValue: Double
+  @Binding  var counter : Int
+  @Binding  var counterDisplayed : Int
+
 
     var body: some View {
+
       VStack {
         Text("Time: \(abs(sliderValue), specifier: "%.0f")")
             .font(.largeTitle)
@@ -33,17 +34,14 @@ struct PomoTimer: View {
           guard isActive else { return }
 
         print("Slider value is \(Int(sliderValue))")
+        counterDisplayed = Int(sliderValue)
 
+          if sliderValue > 0 {
+            sliderValue -= 1
+            print("Value of SliderValue \(sliderValue)")
+          }
 
-
-
-
-          //if sliderValue > 0 {
-          //  sliderValue -= 1
-          //  print("Value of SliderValue \(sliderValue)")
-          //}
-
-        if counter == (Int(sliderValue) - 1) {
+        if counter == (Int(counterDisplayed)) {
           timer.upstream.connect().cancel()
           print("I stopped")
           } else {
@@ -52,6 +50,7 @@ struct PomoTimer: View {
 
           counter += 1
           print("counter is \(counter)")
+        print("Counter Displayed is \(counterDisplayed)")
 
       }
       .onChange(of: scenePhase) {
@@ -70,5 +69,5 @@ struct PomoTimer: View {
 }
 
 #Preview {
-  PomoTimer(sliderValue: .constant(5.0))
+  PomoTimer(sliderValue: .constant(5.0),counter: .constant(5),counterDisplayed: .constant(5))
 }

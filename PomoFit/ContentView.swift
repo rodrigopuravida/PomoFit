@@ -16,6 +16,7 @@ struct ContentView: View {
   @Binding var sliderValue: Double
   @Binding var selectedBreak: Int
   @Binding var counter: Int
+  @Binding var counterDisplayed: Int
 
 
   let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
@@ -33,7 +34,7 @@ struct ContentView: View {
           .frame(width:200, height: 200)
 
 
-        PomoTimer(sliderValue: $sliderValue)
+        PomoTimer(sliderValue: $sliderValue,counter: $counter,counterDisplayed:$counterDisplayed)
 
 
         BreakTime(selectedBreak: $selectedBreak)
@@ -50,5 +51,5 @@ struct ContentView: View {
 
 
 #Preview {
-  ContentView(sliderValue: .constant(0.5), selectedBreak: .constant(5),counter: .constant(3))
+  ContentView(sliderValue: .constant(0.5), selectedBreak: .constant(5),counter: .constant(3),counterDisplayed: .constant(5))
 }

@@ -19,6 +19,10 @@ struct ManagementView: View {
 
   @State private var counter = 0
 
+  @State private var counterDisplayed = 0
+
+
+
   var breakTimes = [3, 5, 10, 15]
   @State private var selectedBreak = 5
 
@@ -27,7 +31,7 @@ struct ManagementView: View {
     NavigationView {
       VStack {
 
-        NavigationLink(destination: ContentView(sliderValue: $sliderValue, selectedBreak: $selectedBreak,counter: $counter)) {
+        NavigationLink(destination: ContentView(sliderValue: $sliderValue, selectedBreak: $selectedBreak,counter: $counter,counterDisplayed:$counterDisplayed)) {
           Text("Go PomoFit")
             .font(.title)
         }
@@ -36,6 +40,9 @@ struct ManagementView: View {
           .font(.title)
         Slider(value: $sliderValue, in: 0...60)
           .padding(.horizontal)
+
+       
+
 
         Divider()
         Text("Time  : \(abs(sliderValue), specifier: "%.0f")")
