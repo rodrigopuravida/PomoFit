@@ -12,7 +12,7 @@ struct PomoTimer: View {
     @Environment(\.scenePhase) var scenePhase
     @State private var isActive = true
 
-  let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+  @State private var timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
   @Binding var sliderValue: Double
   @Binding  var counter : Int
@@ -36,21 +36,17 @@ struct PomoTimer: View {
         print("Slider value is \(Int(sliderValue))")
         counterDisplayed = Int(sliderValue)
 
-          if sliderValue > 0 {
-            sliderValue -= 1
-            print("Value of SliderValue \(sliderValue)")
-          }
+        print("pre \(sliderValue)")
 
-        if counter == (Int(counterDisplayed)) {
-          timer.upstream.connect().cancel()
+        if Int(sliderValue) <= 1 {
+          sliderValue -= 1
+          self.timer.upstream.connect().cancel()
           print("I stopped")
           } else {
-          print("The time is now \(time)")
-          }
+              sliderValue -= 1
+              print("post \(sliderValue)")
+            }
 
-          counter += 1
-          print("counter is \(counter)")
-        print("Counter Displayed is \(counterDisplayed)")
 
       }
       .onChange(of: scenePhase) {
