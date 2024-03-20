@@ -16,6 +16,7 @@ struct ManagementView: View {
   @State private var isSecondViewActive = false
 
   @State private var sliderValue: Double = 60.0
+  @State private var sliderValueBreak: Double = 15.0
 
   @State private var counter = 0
 
@@ -23,15 +24,13 @@ struct ManagementView: View {
 
 
 
-  var breakTimes = [3, 5, 10, 15]
-  @State private var selectedBreak = 5
 
 
   var body: some View {
     NavigationView {
       VStack {
 
-        NavigationLink(destination: ContentView(sliderValue: $sliderValue, selectedBreak: $selectedBreak,counter: $counter,counterDisplayed:$counterDisplayed)) {
+        NavigationLink(destination: ContentView(sliderValue: $sliderValue,sliderValueBreak: $sliderValueBreak,counter: $counter,counterDisplayed:$counterDisplayed)) {
           Text("Go PomoFit")
             .font(.title)
         }
@@ -54,12 +53,13 @@ struct ManagementView: View {
             .font(.title2)
 
         .padding([.top, .leading, .bottom], 10.0)
-        Picker("Please choose a Break Time", selection: $selectedBreak) {
-                        ForEach(breakTimes, id: \.self) {
-                            Text(String($0))
-                        }
-                    }
-                    Text("You selected: \(selectedBreak) minutes break")
+          Slider(value: $sliderValueBreak, in: 0...15)
+            .padding(.horizontal)
+
+          Divider()
+          Text("Break Time  : \(abs(sliderValueBreak), specifier: "%.0f")")
+            .font(.title2)
+
         }
 
 

@@ -14,7 +14,7 @@ struct ContentView: View {
   @State private var isActive = true
 
   @Binding var sliderValue: Double
-  @Binding var selectedBreak: Int
+  @Binding var sliderValueBreak: Double
   @Binding var counter: Int
   @Binding var counterDisplayed: Int
 
@@ -34,10 +34,12 @@ struct ContentView: View {
           .frame(width:200, height: 200)
 
 
-        PomoTimer(sliderValue: $sliderValue,counter: $counter,counterDisplayed:$counterDisplayed)
+        PomoTimer(sliderValue: $sliderValue,
+                  counter: $counter ,counterDisplayed:$counterDisplayed)
+ 
 
 
-        BreakTime(selectedBreak: $selectedBreak)
+        BreakTime(sliderValue: $sliderValue, sliderValueBreak: $sliderValueBreak)
 
 
 
@@ -51,5 +53,5 @@ struct ContentView: View {
 
 
 #Preview {
-  ContentView(sliderValue: .constant(0.5), selectedBreak: .constant(5),counter: .constant(3),counterDisplayed: .constant(5))
+  ContentView(sliderValue: .constant(0.5), sliderValueBreak: .constant(3.0),counter: .constant(3),counterDisplayed: .constant(5))
 }

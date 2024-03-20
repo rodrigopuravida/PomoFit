@@ -33,12 +33,11 @@ struct PomoTimer: View {
       .onReceive(timer) { time in
           guard isActive else { return }
 
-        print("Slider value is \(Int(sliderValue))")
-        counterDisplayed = Int(sliderValue)
+        print("Slider value is \(sliderValue)")
 
         print("pre \(sliderValue)")
 
-        if Int(sliderValue) <= 1 {
+        if (sliderValue - 1) < 1 {
           sliderValue -= 1
           self.timer.upstream.connect().cancel()
           print("I stopped")
