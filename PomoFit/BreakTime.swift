@@ -15,6 +15,7 @@ struct BreakTime: View {
 
   @Binding var sliderValue: Double
   @Binding var sliderValueBreak: Double
+  @Binding var isEnabled: Bool
 
 
   @State private var timerBreak = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
@@ -36,7 +37,7 @@ struct BreakTime: View {
         //.opacity(isHidden ? 0 : 1)
     }
     .onReceive(timerBreak) { time in
-      guard isActive else { return }
+      guard (isActive && !isEnabled) else { return }
 
       print("Slider BREAK value is \(sliderValueBreak)")
 
@@ -68,5 +69,5 @@ struct BreakTime: View {
 
 }
 #Preview {
-  BreakTime(sliderValue: .constant(5.0),sliderValueBreak: .constant(5.0))
+  BreakTime(sliderValue: .constant(5.0),sliderValueBreak: .constant(5.0), isEnabled: .constant(false))
 }

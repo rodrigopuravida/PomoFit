@@ -42,7 +42,7 @@ struct ContentView: View {
 
 
 
-        BreakTime(sliderValue: $sliderValue, sliderValueBreak: $sliderValueBreak)
+        BreakTime(sliderValue: $sliderValue, sliderValueBreak: $sliderValueBreak,isEnabled: $isEnabled)
           .opacity(isEnabled ? 0 : 1)
 
 
