@@ -22,7 +22,9 @@ struct ManagementView: View {
 
   @State private var counterDisplayed = 0
 
+  @State private var isHidden = false
 
+  @State private var isEnabled = true
 
 
 
@@ -30,7 +32,8 @@ struct ManagementView: View {
     NavigationView {
       VStack {
 
-        NavigationLink(destination: ContentView(sliderValue: $sliderValue,sliderValueBreak: $sliderValueBreak,counter: $counter,counterDisplayed:$counterDisplayed)) {
+        NavigationLink(destination: ContentView(sliderValue: $sliderValue,sliderValueBreak: $sliderValueBreak,counter: $counter,counterDisplayed:$counterDisplayed,isHidden: $isHidden,isEnabled:$isEnabled))
+        {
           Text("Go PomoFit")
             .font(.title)
         }
@@ -59,6 +62,14 @@ struct ManagementView: View {
           Divider()
           Text("Break Time  : \(abs(sliderValueBreak), specifier: "%.0f")")
             .font(.title2)
+
+          Divider()
+          Toggle(isOn: $isEnabled) {
+              Text("Disable Break")
+              .font(.system(.title2, design: .rounded))
+
+          }
+
 
         }
 

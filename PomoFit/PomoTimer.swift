@@ -11,12 +11,14 @@ import AVFoundation
 struct PomoTimer: View {
     @Environment(\.scenePhase) var scenePhase
     @State private var isActive = true
+    @State private var isHidden = true
 
   @State private var timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
   @Binding var sliderValue: Double
   @Binding  var counter : Int
   @Binding  var counterDisplayed : Int
+  @Binding var isEnabled: Bool
 
 
     var body: some View {
@@ -32,15 +34,19 @@ struct PomoTimer: View {
       }
       .onReceive(timer) { time in
           guard isActive else { return }
-
+        
         print("Slider value is \(sliderValue)")
+        print("value of pre isEnabled is \(isEnabled)")
 
         print("pre \(sliderValue)")
 
         if (sliderValue - 1) < 1 {
           sliderValue -= 1
           self.timer.upstream.connect().cancel()
-          print("I stopped")
+          print("I stopped setting timer to visible")
+          isEnabled = false
+          print("value of post isEnabled is \(isEnabled)")
+
           } else {
               sliderValue -= 1
               print("post \(sliderValue)")
@@ -64,5 +70,5 @@ struct PomoTimer: View {
 }
 
 #Preview {
-  PomoTimer(sliderValue: .constant(5.0),counter: .constant(5),counterDisplayed: .constant(5))
+  PomoTimer(sliderValue: .constant(5.0),counter: .constant(5),counterDisplayed: .constant(5),isEnabled: .constant(false))
 }

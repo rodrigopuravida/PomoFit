@@ -13,10 +13,13 @@ struct ContentView: View {
   @Environment(\.scenePhase) var scenePhase
   @State private var isActive = true
 
+
   @Binding var sliderValue: Double
   @Binding var sliderValueBreak: Double
   @Binding var counter: Int
   @Binding var counterDisplayed: Int
+  @Binding var isHidden: Bool
+  @Binding var isEnabled: Bool
 
 
   let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
@@ -35,11 +38,14 @@ struct ContentView: View {
 
 
         PomoTimer(sliderValue: $sliderValue,
-                  counter: $counter ,counterDisplayed:$counterDisplayed)
- 
+                  counter: $counter ,counterDisplayed:$counterDisplayed,isEnabled: $isEnabled)
 
 
-        BreakTime(sliderValue: $sliderValue, sliderValueBreak: $sliderValueBreak)
+
+        BreakTime(sliderValue: $sliderValue, sliderValueBreak: $sliderValueBreak, isHidden: $isHidden)
+          .opacity(isEnabled ? 0 : 1)
+
+
 
 
 
@@ -53,5 +59,5 @@ struct ContentView: View {
 
 
 #Preview {
-  ContentView(sliderValue: .constant(0.5), sliderValueBreak: .constant(3.0),counter: .constant(3),counterDisplayed: .constant(5))
+  ContentView(sliderValue: .constant(0.5), sliderValueBreak: .constant(3.0),counter: .constant(3),counterDisplayed: .constant(5),isHidden: .constant(false), isEnabled: .constant(false))
 }

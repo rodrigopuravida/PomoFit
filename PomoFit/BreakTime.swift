@@ -15,6 +15,8 @@ struct BreakTime: View {
 
   @Binding var sliderValue: Double
   @Binding var sliderValueBreak: Double
+  @Binding var isHidden : Bool
+
 
   @State private var timerBreak = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
@@ -22,6 +24,7 @@ struct BreakTime: View {
 
     Text("Break Time")
       .font(.title)
+      //.opacity(isHidden ? 0 : 1)
 
     VStack {
       Text("Time: \(abs(sliderValueBreak), specifier: "%.0f")")
@@ -31,6 +34,7 @@ struct BreakTime: View {
         .padding(.vertical, 5)
         .background(.black.opacity(0.75))
         .clipShape(.capsule)
+        //.opacity(isHidden ? 0 : 1)
     }
     .onReceive(timerBreak) { time in
       guard isActive else { return }
@@ -62,7 +66,8 @@ struct BreakTime: View {
       UIApplication.shared.isIdleTimerDisabled = false
     }
   }
+
 }
 #Preview {
-  BreakTime(sliderValue: .constant(5.0),sliderValueBreak: .constant(5.0))
+  BreakTime(sliderValue: .constant(5.0),sliderValueBreak: .constant(5.0), isHidden: .constant(false))
 }
