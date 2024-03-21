@@ -18,7 +18,7 @@ struct ContentView: View {
   @Binding var sliderValueBreak: Double
   @Binding var counter: Int
   @Binding var counterDisplayed: Int
-  @Binding var isHidden: Bool
+
   @Binding var isEnabled: Bool
 
 
@@ -42,7 +42,7 @@ struct ContentView: View {
 
 
 
-        BreakTime(sliderValue: $sliderValue, sliderValueBreak: $sliderValueBreak, isHidden: $isHidden)
+        BreakTime(sliderValue: $sliderValue, sliderValueBreak: $sliderValueBreak)
           .opacity(isEnabled ? 0 : 1)
 
 
@@ -59,5 +59,5 @@ struct ContentView: View {
 
 
 #Preview {
-  ContentView(sliderValue: .constant(0.5), sliderValueBreak: .constant(3.0),counter: .constant(3),counterDisplayed: .constant(5),isHidden: .constant(false), isEnabled: .constant(false))
+  ContentView(sliderValue: .constant(0.5), sliderValueBreak: .constant(3.0),counter: .constant(3),counterDisplayed: .constant(5), isEnabled: .constant(false))
 }

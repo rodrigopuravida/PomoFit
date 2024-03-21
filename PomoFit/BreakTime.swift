@@ -15,7 +15,6 @@ struct BreakTime: View {
 
   @Binding var sliderValue: Double
   @Binding var sliderValueBreak: Double
-  @Binding var isHidden : Bool
 
 
   @State private var timerBreak = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
@@ -69,5 +68,5 @@ struct BreakTime: View {
 
 }
 #Preview {
-  BreakTime(sliderValue: .constant(5.0),sliderValueBreak: .constant(5.0), isHidden: .constant(false))
+  BreakTime(sliderValue: .constant(5.0),sliderValueBreak: .constant(5.0))
 }

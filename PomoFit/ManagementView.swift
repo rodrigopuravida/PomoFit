@@ -22,7 +22,6 @@ struct ManagementView: View {
 
   @State private var counterDisplayed = 0
 
-  @State private var isHidden = false
 
   @State private var isEnabled = true
 
@@ -32,7 +31,7 @@ struct ManagementView: View {
     NavigationView {
       VStack {
 
-        NavigationLink(destination: ContentView(sliderValue: $sliderValue,sliderValueBreak: $sliderValueBreak,counter: $counter,counterDisplayed:$counterDisplayed,isHidden: $isHidden,isEnabled:$isEnabled))
+        NavigationLink(destination: ContentView(sliderValue: $sliderValue,sliderValueBreak: $sliderValueBreak,counter: $counter,counterDisplayed:$counterDisplayed,isEnabled:$isEnabled))
         {
           Text("Go PomoFit")
             .font(.title)
