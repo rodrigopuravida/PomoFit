@@ -67,7 +67,8 @@ struct ManagementView: View {
               Text("Disable Break")
               .font(.system(.title2, design: .rounded))
 
-          }
+
+          }.opacity(0)
 
 
         }
