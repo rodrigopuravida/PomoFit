@@ -28,59 +28,69 @@ struct ManagementView: View {
 
 
   var body: some View {
-    NavigationView {
-      VStack {
+    NavigationView{
+      ZStack {
+        Image("focus")
+          .resizable()
+          //.aspectRatio(contentMode: .fill)
+          .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
 
-        NavigationLink(destination: ContentView(sliderValue: $sliderValue,sliderValueBreak: $sliderValueBreak,counter: $counter,counterDisplayed:$counterDisplayed,isEnabled:$isEnabled))
-        {
-          Text("Go PomoFit")
-            .font(.title)
-        }
-        .padding()
-        Text("Time in Minutes")
-          .font(.title)
-        Slider(value: $sliderValue, in: 0...60)
-          .padding(.horizontal)
-
-       
-
-
-        Divider()
-        Text("Time  : \(abs(sliderValue), specifier: "%.0f")")
-          .font(.title2)
-        Divider()
 
         VStack {
+          NavigationLink(destination: ContentView(sliderValue: $sliderValue,sliderValueBreak: $sliderValueBreak,counter: $counter,counterDisplayed:$counterDisplayed,isEnabled:$isEnabled))
+          {
+            Text("Go PomoFit")
+              .font(.title)
+              .foregroundColor(.black)
+          }
+          .navigationTitle("Set Up Your PomoFit")
+          .foregroundColor(.white)
+
+          .padding()
+          Text("Time in Minutes")
+            .font(.title)
+            .foregroundColor(.white)
+          Slider(value: $sliderValue, in: 0...60)
+            .padding(.horizontal)
+
+          Divider()
+          Text("Time  : \(abs(sliderValue), specifier: "%.0f")")
+            .font(.title2)
+            .foregroundColor(.white)
+          Divider()
+
           Text("Please choose a Break Time")
             .font(.title2)
+            .foregroundColor(.white)
 
-        .padding([.top, .leading, .bottom], 10.0)
+          .padding([.top, .leading, .bottom], 10.0)
           Slider(value: $sliderValueBreak, in: 0...15)
-            .padding(.horizontal)
+            .padding(.all)
+
 
           Divider()
           Text("Break Time  : \(abs(sliderValueBreak), specifier: "%.0f")")
             .font(.title2)
+            .foregroundColor(.white)
 
           Divider()
+
           Toggle(isOn: $isEnabled) {
-              Text("Disable Break")
+            Text("Disable Break")
               .font(.system(.title2, design: .rounded))
-
-
+              .foregroundColor(.white)
           }.opacity(0)
 
 
+
+
         }
-
-
-      }.navigationTitle("Set Up Your PomoFit")
-
+      }
     }
-
 
   }
 }
+
 
 #Preview {
   ManagementView()
