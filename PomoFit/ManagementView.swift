@@ -22,8 +22,8 @@ struct ManagementView: View {
 
   @State private var counterDisplayed = 0
 
-
   @State private var isEnabled = true
+
 
 
 
@@ -72,14 +72,22 @@ struct ManagementView: View {
           Text("Break Time  : \(abs(sliderValueBreak), specifier: "%.0f")")
             .font(.title2)
             .foregroundColor(.white)
+            .onAppear {
+              isEnabled = true
+            }
 
           Divider()
+
 
           Toggle(isOn: $isEnabled) {
             Text("Disable Break")
               .font(.system(.title2, design: .rounded))
               .foregroundColor(.white)
-          }.opacity(0)
+              .onChange(of: isEnabled) {
+                //isEnabled = true
+              }
+
+          }.opacity(1)
 
 
 

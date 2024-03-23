@@ -40,16 +40,23 @@ struct PomoTimer: View {
 
         print("pre \(sliderValue)")
 
-        if (sliderValue - 1) < 1 {
-          sliderValue -= 1
+        if (sliderValue) < 1 {
+          //sliderValue -= 1
           self.timer.upstream.connect().cancel()
           print("I stopped setting timer to visible")
-          isEnabled = false
-          print("value of post isEnabled is \(isEnabled)")
+          //isEnabled = false
+
+
 
           } else {
               sliderValue -= 1
               print("post \(sliderValue)")
+            if (sliderValue <= 1 && sliderValue >= 0)
+            {
+              isEnabled = false
+
+              print("value of post isEnabled is \(isEnabled)")
+            }
             }
 
 

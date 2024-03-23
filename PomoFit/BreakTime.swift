@@ -43,7 +43,7 @@ struct BreakTime: View {
 
       print("pre BREAK\(sliderValueBreak)")
 
-      if (sliderValueBreak - 1) < 1 {
+      if (sliderValueBreak) < 1 {
         sliderValueBreak -= 1
         self.timerBreak.upstream.connect().cancel()
         print("I stopped")
